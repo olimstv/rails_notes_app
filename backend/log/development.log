@@ -1,0 +1,1214 @@
+  [1m[35m (138.1ms)[0m  [1m[35mCREATE DATABASE "backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (61.3ms)[0m  [1m[35mCREATE DATABASE "backend_test" ENCODING = 'unicode'[0m
+Started GET "/" for ::1 at 2021-04-08 09:23:19 +0930
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/olimostovyi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/olimostovyi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.9ms | Allocations: 482)
+Completed 200 OK in 27ms (Views: 12.9ms | ActiveRecord: 0.0ms | Allocations: 4252)
+
+
+  [1m[35m (25.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210408001321)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210408001321"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-08 00:23:37.469805"], ["updated_at", "2021-04-08 00:23:37.469805"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "test"], ["password_digest", "$2a$12$XEhqkWHlUpCitWlrC8DIv./cb7au7KgxBFmm5wnDqRF9Q6T16PBN."], ["email", "test@test.com"], ["created_at", "2021-04-08 00:24:47.062238"], ["updated_at", "2021-04-08 00:24:47.062238"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/login" for ::1 at 2021-04-08 10:46:00 +0930
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/olimostovyi/Documents/WebDev/projects/notes_app/backend/app/controllers/application_controller.rb:49: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/application_controller.rb:49: syntax error, unexpected end-of-input, expecting end
+app/controllers/application_controller.rb:49: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/login" for ::1 at 2021-04-08 10:46:57 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "email"=>"test@test.com", "user"=>{"username"=>"test", "email"=>"test@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `login'
+Completed 200 OK in 228ms (Views: 0.4ms | ActiveRecord: 5.9ms | Allocations: 7662)
+
+
+Started GET "/auto_login" for ::1 at 2021-04-08 10:48:30 +0930
+Processing by UsersController#auto_login as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "email"=>"test@test.com", "user"=>{"username"=>"test", "email"=>"test@test.com"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1102)
+
+
+  
+NoMethodError (undefined method `header' for #<ActionDispatch::Request:0x00007fefbe6be580>
+Did you mean?  headers
+               head?):
+  
+app/controllers/application_controller.rb:12:in `auth_header'
+app/controllers/application_controller.rb:19:in `decoded_token'
+app/controllers/application_controller.rb:34:in `logged_in_user'
+app/controllers/application_controller.rb:42:in `logged_in?'
+app/controllers/application_controller.rb:48:in `authorized'
+Started GET "/auto_login" for ::1 at 2021-04-08 10:50:28 +0930
+Processing by UsersController#auto_login as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "email"=>"test@test.com", "user"=>{"username"=>"test", "email"=>"test@test.com"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 188)
+
+
+Started POST "/login" for ::1 at 2021-04-08 10:52:12 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test", "email"=>"test@test.com", "password"=>"[FILTERED]", "user"=>{"username"=>"test", "email"=>"test@test.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `login'
+Completed 200 OK in 222ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 3515)
+
+
+Started GET "/auto_login" for ::1 at 2021-04-08 10:53:01 +0930
+Processing by UsersController#auto_login as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "email"=>"test@test.com", "user"=>{"username"=>"test", "email"=>"test@test.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 967)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateNotes (20210408012758)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.5ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying, "body" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_7f2323ad43"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_notes_on_user_id" ON "notes" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210408012758"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/notes" for ::1 at 2021-04-08 11:14:10 +0930
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by NotesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 160)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:14:47 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:7:in `index'
+Completed 200 OK in 37ms (Views: 0.1ms | ActiveRecord: 6.0ms | Allocations: 7501)
+
+
+Started POST "/notes" for ::1 at 2021-04-08 11:18:55 +0930
+Processing by NotesController#create as */*
+  Parameters: {"title"=>"First test note", "body"=>"Ask Lay about the format of the stickers", "note"=>{"title"=>"First test note", "body"=>"Ask Lay about the format of the stickers"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 6.0ms | Allocations: 6622)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (User(#70333839692200) expected, got 1 which is an instance of Integer(#70333810162780)):
+  
+app/controllers/notes_controller.rb:20:in `create'
+Started POST "/notes" for ::1 at 2021-04-08 11:20:01 +0930
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by NotesController#create as */*
+  Parameters: {"title"=>"First test note", "body"=>"Ask Lay about the format of the stickers", "note"=>{"title"=>"First test note", "body"=>"Ask Lay about the format of the stickers"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mNote Create (3.0ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "First test note"], ["body", "Ask Lay about the format of the stickers"], ["user_id", 1], ["created_at", "2021-04-08 01:50:01.479827"], ["updated_at", "2021-04-08 01:50:01.479827"]]
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+Completed 201 Created in 33ms (Views: 0.7ms | ActiveRecord: 12.3ms | Allocations: 13596)
+
+
+Started POST "/notes" for ::1 at 2021-04-08 11:20:41 +0930
+Processing by NotesController#create as */*
+  Parameters: {"title"=>"First test note", "body"=>"Ask Lay about the format of the stickers", "note"=>{"title"=>"First test note", "body"=>"Ask Lay about the format of the stickers"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "First test note"], ["body", "Ask Lay about the format of the stickers"], ["user_id", 1], ["created_at", "2021-04-08 01:50:41.127496"], ["updated_at", "2021-04-08 01:50:41.127496"]]
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+Completed 201 Created in 15ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 2689)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:22:18 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 1402)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:22:21 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1299)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:25:10 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 26ms (Views: 5.5ms | ActiveRecord: 10.3ms | Allocations: 8714)
+
+
+Started PUT "/notes/2" for ::1 at 2021-04-08 11:26:10 +0930
+Processing by NotesController#update as */*
+  Parameters: {"title"=>"Second test note", "body"=>"Dont forget to commit the code", "id"=>"2", "note"=>{"title"=>"Second test note", "body"=>"Dont forget to commit the code"}}
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:46:in `set_note'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+  [1m[36mNote Update (0.7ms)[0m  [1m[33mUPDATE "notes" SET "title" = $1, "body" = $2, "updated_at" = $3 WHERE "notes"."id" = $4[0m  [["title", "Second test note"], ["body", "Dont forget to commit the code"], ["updated_at", "2021-04-08 01:56:10.309441"], ["id", 2]]
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 6229)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:26:17 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1548)
+
+
+Started POST "/notes/" for ::1 at 2021-04-08 11:26:49 +0930
+Processing by NotesController#create as */*
+  Parameters: {"title"=>"lasdkjfga;klfga test note", "body"=>"sz;ldfiyugnlsbajrul;tsiouerynb; i", "note"=>{"title"=>"lasdkjfga;klfga test note", "body"=>"sz;ldfiyugnlsbajrul;tsiouerynb; i"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "lasdkjfga;klfga test note"], ["body", "sz;ldfiyugnlsbajrul;tsiouerynb; i"], ["user_id", 1], ["created_at", "2021-04-08 01:56:49.032666"], ["updated_at", "2021-04-08 01:56:49.032666"]]
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+Completed 201 Created in 9ms (Views: 1.1ms | ActiveRecord: 2.9ms | Allocations: 2601)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:26:54 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 1650)
+
+
+Started DELETE "/notes/3" for ::1 at 2021-04-08 11:27:11 +0930
+Error occurred while parsing request parameters.
+Contents:
+
+// {
+//     "title": "lasdkjfga;klfga test note",
+//     "body": "sz;ldfiyugnlsbajrul;tsiouerynb; i"
+// }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at ''):
+  
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:96:in `rescue in parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:92:in `parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:399:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:398:in `POST'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:284:in `_wrapper_enabled?'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (6.1.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:165:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+// {
+//     "title": "lasdkjfga;klfga test note",
+//     "body": "sz;ldfiyugnlsbajrul;tsiouerynb; i"
+// }
+Started GET "/notes" for ::1 at 2021-04-08 11:27:31 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1649)
+
+
+Started DELETE "/notes/3" for ::1 at 2021-04-08 11:27:45 +0930
+Processing by NotesController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:46:in `set_note'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mNote Destroy (0.6ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 2.0ms | Allocations: 2510)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:27:52 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.8ms | Allocations: 1547)
+
+
+Started GET "/notes" for ::1 at 2021-04-08 11:28:21 +0930
+Processing by NotesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 128)
+
+
+Started POST "//users/" for ::1 at 2021-04-09 07:03:31 +0930
+Started POST "//users/" for ::1 at 2021-04-09 07:03:31 +0930
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"], "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 20.3ms | Allocations: 4008)
+
+
+Completed 200 OK in 37ms (Views: 0.2ms | ActiveRecord: 17.4ms | Allocations: 10305)
+
+
+Started POST "//users/" for ::1 at 2021-04-09 07:07:57 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 386)
+
+
+Started POST "//users/" for ::1 at 2021-04-09 07:15:03 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test2"], "password"=>"[FILTERED]", "user"=>{"username"=>["test2"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 93ms (Views: 0.2ms | ActiveRecord: 8.2ms | Allocations: 2447)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (4.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started POST "//users/" for ::1 at 2021-04-09 07:36:47 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 155ms (Views: 0.1ms | ActiveRecord: 7.3ms | Allocations: 2395)
+
+
+Started POST "//users/" for ::1 at 2021-04-09 07:45:20 +0930
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 5.9ms | Allocations: 6861)
+
+
+Started POST "//users/" for ::1 at 2021-04-09 07:53:04 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 8.6ms | Allocations: 3043)
+
+
+Started POST "//users/" for ::1 at 2021-04-09 07:55:39 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameter: :username[0m
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 10.2ms | Allocations: 3044)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:03:31 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameter: :username[0m
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 5.9ms | Allocations: 2398)
+
+
+Started POST "/users" for ::1 at 2021-04-09 08:25:54 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test123", "pasword"=>"test123", "user"=>{"username"=>"test123"}}
+Completed 200 OK in 156ms (Views: 0.7ms | ActiveRecord: 12.0ms | Allocations: 2391)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:38:26 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 8.7ms | Allocations: 3071)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:42:43 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 11.2ms | Allocations: 3085)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:43:45 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 4.6ms | Allocations: 3149)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:45:10 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 493)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:46:24 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>["test1"], "password"=>"[FILTERED]", "user"=>{"username"=>["test1"]}}
+[31mUnpermitted parameters: :username, :password, :user[0m
+[31mUnpermitted parameters: :username, :password, :user[0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 496)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:48:20 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "user"=>{"username"=>"test1"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "test1"], ["password_digest", "$2a$12$phYyBzUq0DP075RZo7rE..9bkqFp5znN4ssCqdc/8Yds5AZ6OuonC"], ["created_at", "2021-04-08 23:18:20.763787"], ["updated_at", "2021-04-08 23:18:20.763787"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+[31mUnpermitted parameter: :user[0m
+Completed 200 OK in 256ms (Views: 0.2ms | ActiveRecord: 5.4ms | Allocations: 2352)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:51:10 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test2", "password"=>"[FILTERED]", "email"=>"", "user"=>{"username"=>"test2", "email"=>""}}
+[31mUnpermitted parameters: :email, :user[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "test2"], ["password_digest", "$2a$12$hS7NI7Oe11LBXIOyBMqTWO4B.BETNTpIl4f/ObQFDbnjjTjeVsmTe"], ["created_at", "2021-04-08 23:21:10.960215"], ["updated_at", "2021-04-08 23:21:10.960215"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+[31mUnpermitted parameters: :email, :user[0m
+Completed 200 OK in 223ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2204)
+
+
+Started POST "//users" for ::1 at 2021-04-09 08:54:10 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test123", "password"=>"[FILTERED]", "email"=>"test123@test.com", "user"=>{"username"=>"test123", "email"=>"test123@test.com"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 2.4ms | Allocations: 514)
+
+
+  
+NoMethodError (undefined method `valid?' for nil:NilClass):
+  
+app/controllers/users_controller.rb:12:in `create'
+Started POST "//users" for ::1 at 2021-04-09 08:56:03 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test123", "password"=>"[FILTERED]", "email"=>"test123@test.com", "user"=>{"username"=>"test123", "email"=>"test123@test.com"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "test123"], ["password_digest", "$2a$12$S3m4eRPurjUeg58VYwJXheUzXn5.Yx23jic8Lb9PMntegJdWQ2TY."], ["email", "test123@test.com"], ["created_at", "2021-04-08 23:26:03.620354"], ["updated_at", "2021-04-08 23:26:03.620354"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 226ms (Views: 0.3ms | ActiveRecord: 6.1ms | Allocations: 4788)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (1.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3)[0m  [[nil, 1], [nil, 2], [nil, 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (1.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [[nil, 1], [nil, 2]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [[nil, 2], [nil, 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "//users" for ::1 at 2021-04-09 09:11:01 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "test1"], ["password_digest", "$2a$12$oTWFgOYpUuBZkvNKU/3/6uv27zitsq1TXbDQAaY6PKHuaED4Vgaj2"], ["email", "test1@test.com"], ["created_at", "2021-04-08 23:41:01.614580"], ["updated_at", "2021-04-08 23:41:01.614580"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 275ms (Views: 0.8ms | ActiveRecord: 12.3ms | Allocations: 4723)
+
+
+Started POST "//login" for ::1 at 2021-04-09 09:14:03 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 254ms (Views: 1.0ms | ActiveRecord: 1.2ms | Allocations: 2375)
+
+
+Started POST "//login" for ::1 at 2021-04-09 09:27:37 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 389ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 2866)
+
+
+Started POST "//login" for ::1 at 2021-04-09 09:51:32 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 350ms (Views: 1.8ms | ActiveRecord: 9.1ms | Allocations: 2862)
+
+
+Started POST "//login" for ::1 at 2021-04-09 09:53:47 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 244ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 765)
+
+
+Started POST "//login" for ::1 at 2021-04-09 10:01:03 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 428ms (Views: 0.5ms | ActiveRecord: 10.5ms | Allocations: 2862)
+
+
+Started POST "//login" for ::1 at 2021-04-09 10:04:31 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 258ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 764)
+
+
+Started POST "//login" for ::1 at 2021-04-09 11:20:18 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 395ms (Views: 2.0ms | ActiveRecord: 16.7ms | Allocations: 2860)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:20:19 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 35ms (Views: 2.7ms | ActiveRecord: 7.7ms | Allocations: 2787)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:21:22 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (2.0ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 2.1ms | ActiveRecord: 5.0ms | Allocations: 1344)
+
+
+Started POST "//notes" for ::1 at 2021-04-09 11:21:43 +0930
+Processing by NotesController#create as */*
+  Parameters: {"id"=>0, "title"=>"Test Note", "body"=>"Here's first test note", "note"=>{"id"=>0, "title"=>"Test Note", "body"=>"Here's first test note"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Test Note"], ["body", "Here's first test note"], ["user_id", 5], ["created_at", "2021-04-09 01:51:43.500630"], ["updated_at", "2021-04-09 01:51:43.500630"]]
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+Completed 201 Created in 46ms (Views: 2.9ms | ActiveRecord: 9.2ms | Allocations: 7313)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:21:43 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 1.6ms | Allocations: 1453)
+
+
+Started POST "//notes" for ::1 at 2021-04-09 11:22:07 +0930
+Processing by NotesController#create as */*
+  Parameters: {"id"=>0, "title"=>"Test Note #2", "body"=>"a;ldskjf;alksdj;flakjs;dkfj;asdlkfj;lakdfuhgpaotieuoia;dkfjhrag;itoeur;lahf;er", "note"=>{"id"=>0, "title"=>"Test Note #2", "body"=>"a;ldskjf;alksdj;flakjs;dkfj;asdlkfj;lakdfuhgpaotieuoia;dkfjhrag;itoeur;lahf;er"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Test Note #2"], ["body", "a;ldskjf;alksdj;flakjs;dkfj;asdlkfj;lakdfuhgpaotieuoia;dkfjhrag;itoeur;lahf;er"], ["user_id", 5], ["created_at", "2021-04-09 01:52:07.720975"], ["updated_at", "2021-04-09 01:52:07.720975"]]
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+Completed 201 Created in 9ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 2580)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:22:07 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.9ms | Allocations: 1546)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:26:43 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 1.5ms | Allocations: 1547)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:27:04 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 3.6ms | Allocations: 1546)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:29:39 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 4.5ms | ActiveRecord: 1.8ms | Allocations: 1546)
+
+
+Started PUT "//notes/5" for ::1 at 2021-04-09 11:30:03 +0930
+Processing by NotesController#update as */*
+  Parameters: {"id"=>"5", "title"=>"Test Note #2", "body"=>"Here's the 2nd test note", "user_id"=>5, "created_at"=>"2021-04-09T01:52:07.720Z", "updated_at"=>"2021-04-09T01:52:07.720Z", "note"=>{"id"=>"5", "title"=>"Test Note #2", "body"=>"Here's the 2nd test note", "user_id"=>5, "created_at"=>"2021-04-09T01:52:07.720Z", "updated_at"=>"2021-04-09T01:52:07.720Z"}}
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:46:in `set_note'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+[31mUnpermitted parameters: :id, :created_at, :updated_at[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+  [1m[36mNote Update (1.5ms)[0m  [1m[33mUPDATE "notes" SET "body" = $1, "updated_at" = $2 WHERE "notes"."id" = $3[0m  [["body", "Here's the 2nd test note"], ["updated_at", "2021-04-09 02:00:03.325509"], ["id", 5]]
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:31:in `update'
+Completed 200 OK in 49ms (Views: 0.9ms | ActiveRecord: 3.5ms | Allocations: 5555)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:30:03 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 72ms (Views: 1.5ms | ActiveRecord: 1.5ms | Allocations: 1547)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:36:41 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 281ms (Views: 2.5ms | ActiveRecord: 14.3ms | Allocations: 3712)
+
+
+Started DELETE "//notes/5" for ::1 at 2021-04-09 11:36:43 +0930
+Processing by NotesController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:46:in `set_note'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mNote Destroy (0.9ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+Completed 204 No Content in 14ms (ActiveRecord: 5.6ms | Allocations: 2494)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:36:43 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.9ms | Allocations: 1444)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:37:22 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 3.3ms | ActiveRecord: 3.1ms | Allocations: 1444)
+
+
+Started DELETE "//notes/4" for ::1 at 2021-04-09 11:37:23 +0930
+Processing by NotesController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:46:in `set_note'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mNote Destroy (0.4ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 2.0ms | Allocations: 2468)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:37:23 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 1343)
+
+
+Started POST "//notes" for ::1 at 2021-04-09 11:37:28 +0930
+Processing by NotesController#create as */*
+  Parameters: {"id"=>0, "title"=>"dfsdf", "body"=>"sdfsdf", "note"=>{"id"=>0, "title"=>"dfsdf", "body"=>"sdfsdf"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "dfsdf"], ["body", "sdfsdf"], ["user_id", 5], ["created_at", "2021-04-09 02:07:28.235556"], ["updated_at", "2021-04-09 02:07:28.235556"]]
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:22:in `create'
+Completed 201 Created in 9ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 2582)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:37:28 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 1.2ms | Allocations: 1444)
+
+
+Started DELETE "//notes/6" for ::1 at 2021-04-09 11:37:29 +0930
+Processing by NotesController#destroy as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:46:in `set_note'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mNote Destroy (0.4ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:40:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 1.6ms | Allocations: 2468)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:37:29 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1343)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:38:31 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 1.6ms | ActiveRecord: 4.0ms | Allocations: 1343)
+
+
+Started POST "//login" for ::1 at 2021-04-09 11:38:44 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 232ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 768)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 11:38:44 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 2.0ms | Allocations: 1343)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 20:10:55 +0930
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 10ms (Views: 0.4ms | ActiveRecord: 3.5ms | Allocations: 2324)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 20:13:28 +0930
+Processing by NotesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 141)
+
+
+Started GET "//notes/" for ::1 at 2021-04-09 20:13:35 +0930
+Processing by NotesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 141)
+
+
+Started POST "//login" for ::1 at 2021-04-10 06:34:14 +0930
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 211ms (Views: 0.2ms | ActiveRecord: 12.2ms | Allocations: 7454)
+
+
+Started POST "//login" for ::1 at 2021-04-10 06:38:42 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 220ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 613)
+
+
+Started POST "//login" for ::1 at 2021-04-10 06:42:50 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 231ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 606)
+
+
+Started POST "//login" for ::1 at 2021-04-10 06:46:07 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"oleksii.mostovyi@gmail.com", "user"=>{"username"=>"test1", "email"=>"oleksii.mostovyi@gmail.com"}}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 215ms (Views: 0.1ms | ActiveRecord: 3.1ms | Allocations: 606)
+
+
+Started POST "//login" for ::1 at 2021-04-10 06:49:15 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 220ms (Views: 1.9ms | ActiveRecord: 0.9ms | Allocations: 607)
+
+
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (test1) LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (test1) LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "//login" for ::1 at 2021-04-10 06:55:25 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 393ms (Views: 0.5ms | ActiveRecord: 8.2ms | Allocations: 2737)
+
+
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (test1) LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Started POST "//users" for ::1 at 2021-04-10 06:57:50 +0930
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"test4", "password"=>"[FILTERED]", "email"=>"test4@test.com", "user"=>{"username"=>"test4", "email"=>"test4@test.com"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "test4"], ["password_digest", "$2a$12$WCIc2z4SJpGZ1wSwvFFyPeOwCMdVq2S/DlMZwxSH8pNfNqEFxjDlq"], ["email", "test4@test.com"], ["created_at", "2021-04-09 21:27:51.081734"], ["updated_at", "2021-04-09 21:27:51.081734"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 238ms (Views: 1.1ms | ActiveRecord: 5.7ms | Allocations: 2298)
+
+
+Started GET "//notes/" for ::1 at 2021-04-10 06:57:51 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (1.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 30ms (Views: 1.7ms | ActiveRecord: 7.2ms | Allocations: 2741)
+
+
+Started GET "//notes/" for ::1 at 2021-04-10 07:22:52 +0930
+Processing by NotesController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `logged_in_user'
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/notes_controller.rb:9:in `index'
+Completed 200 OK in 268ms (Views: 1.8ms | ActiveRecord: 10.5ms | Allocations: 3459)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:08:04 +0930
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "email"=>"", "password"=>"[FILTERED]", "user"=>{"username"=>"test1", "email"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 203ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 7453)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:10:28 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "email"=>"test1@test.com", "password"=>"[FILTERED]", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 228ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 610)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:11:55 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "email"=>"test1@test.com", "password"=>"[FILTERED]", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 220ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 606)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:13:51 +0930
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+  
+ActionDispatch::Http::Parameters::ParseError (416: unexpected token at 'object Object]'):
+  
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:96:in `rescue in parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:92:in `parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:399:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:398:in `POST'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:284:in `_wrapper_enabled?'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (6.1.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:165:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:13:51 +0930
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+  
+ActionDispatch::Http::Parameters::ParseError (416: unexpected token at 'object Object]'):
+  
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:96:in `rescue in parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:92:in `parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:399:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:398:in `POST'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:284:in `_wrapper_enabled?'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (6.1.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:165:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:30:43 +0930
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+  
+ActionDispatch::Http::Parameters::ParseError (416: unexpected token at 'object Object]'):
+  
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:96:in `rescue in parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:92:in `parse_formatted_parameters'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:399:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.1.3.1) lib/action_dispatch/http/request.rb:398:in `POST'
+actionpack (6.1.3.1) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:284:in `_wrapper_enabled?'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (6.1.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:165:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:32:35 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 472ms (Views: 0.3ms | ActiveRecord: 18.8ms | Allocations: 2740)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:42:57 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 472ms (Views: 0.9ms | ActiveRecord: 26.6ms | Allocations: 2686)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:45:31 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 234ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 605)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-04-10 08:46:10 +0930
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "email"=>"test1@test.com", "user"=>{"username"=>"test1", "email"=>"test1@test.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `login'
+Completed 200 OK in 215ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 606)
+
+
